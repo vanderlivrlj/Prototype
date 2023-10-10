@@ -1,23 +1,27 @@
 public class Forma implements Prototipo{
 
-    private int y, x;
+    private Posicao pos;
     private String nome, cor;
     private boolean ehOpaco;
 
+    public Forma(){
+        this.pos = new Posicao();
+    }
+
     public int getY() {
-        return y;
+        return pos.getY();
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.pos.setY(y);
     }
 
     public int getX() {
-        return x;
+        return pos.getX();
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.pos.setX(x);
     }
 
     public String getNome() {
@@ -46,6 +50,19 @@ public class Forma implements Prototipo{
 
     @Override
     public Prototipo getClone(){
-        return null;
+        Forma clone = new Forma();
+
+        clone.setCor(cor);
+        clone.setNome(nome);
+
+        //this.pos.setY(getY());
+
+        Posicao posiscao = new Posicao();
+        posiscao.setX(pos.getX());
+        posiscao.setY(pos.getY());
+
+        clone.pos = posiscao;
+
+        return clone;
     }
 }
